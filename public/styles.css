@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+}
+
+.life {
+    background-color: #7EB114;
+    padding: 20px;
+}
+
+.control-buttons {
+    text-align: center;
+}
+
+.control-buttons__list {
+    display: inline-block;
+    padding: 0;
+    border: 5px solid #A40004;
+    margin-bottom: 0;
+}
+
+.control-buttons__list li,
+.options>ul>li {
+    display: inline-block;
+    color: #CBF76F;
+    padding: 10px 20px;
+    border: 2px solid #BE2F33;
+    background-color: #009B95;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+.generation-count{
+    text-align: center;
+}
+
+.generation-count__header {
+    display: inline-block;
+    padding: 10px;
+    border: 5px solid #A40004;
+    background-color: #009B95;
+    margin-top: -5px;
+    margin-bottom: 0;
+    color: #CBF76F;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    color: #A40004;
+}
+
+.options>ul {
+    padding: 0;
+    margin: 0;
+}
+
+.control-buttons__list li,
+.options>ul>li {
+    margin-right: -3px;
+}
+
+.control-buttons__list li:last-of-type,
+.options>ul>li:last-of-type {
+    margin-right: 0;
+}
+
+.options__label {
+    margin: 10px 0;
+    display: inline-block;
+}
+
+.field {
+    margin-top: 15px;
+}
+
+.field__cells {
+    border: 5px solid #A40004;
+    background-color: black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.field__cells.middle {
+    width: 700px;
+    height: 500px;
+}
+
+.field__cells.little {
+    width: 500px;
+    height: 300px;
+}
+
+.field__cells.big {
+    width: 900px;
+    height: 700px;
+}
+
+.field__cell {
+    width: 10px;
+    height: 10px;
+    box-sizing: border-box;
+    border-left: 1px solid #6a6a6a;
+    border-top: 1px solid #6a6a6a;
+    display: inline-block;
+    float: left;
+}
+
+.field__cell-alive {
+    width: 10px;
+    height: 10px;
+    box-sizing: border-box;
+    border-left: 1px solid #6a6a6a;
+    border-top: 1px solid #6a6a6a;
+    display: inline-block;
+    float: left;
+    background-color: red;
+}
