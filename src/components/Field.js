@@ -128,7 +128,7 @@ class Field extends React.Component {
 
             if (i <= xMax - 1) {
                 if (i === 0) {
-                    leftTopDiag = xMax * yMax - 1;
+                    leftTopDiag = (xMax * yMax) - 1;
                 } else {
                     leftTopDiag = xMax * (yMax - 1) + i - 1;
                 }
@@ -138,12 +138,14 @@ class Field extends React.Component {
                 leftTopDiag = i - xMax - 1;
             }
 
-            if (i < xMax - 1) {
+            if (i <= xMax - 1) {
                 if (i === xMax - 1) {
-                    rightTopDiag = xMax * yMax - 1;
+                    rightTopDiag = xMax * (yMax - 1);
                 } else {
                     rightTopDiag = xMax * (yMax - 1) + i + 1;
                 }
+            } else if (i%xMax === xMax-1) {
+                rightTopDiag = (i - ((xMax-1)*2))-1;
             } else {
                 rightTopDiag = i - xMax + 1;
             }
@@ -156,6 +158,8 @@ class Field extends React.Component {
                 }
             } else if (i === 0) {
                 leftBottomDiag = xMax*yMax - 1;
+            } else if (i%xMax === 0) {
+                leftBottomDiag = (i + (xMax*2)) - 1;
             } else {
                 leftBottomDiag = i + xMax - 1;
             }
@@ -164,12 +168,10 @@ class Field extends React.Component {
                 if (i === xMax * yMax - 1) {
                     rightBottomDiag = 0;
                 } else {
-                    rightBottomDiag = i % xMax + 1;
+                    rightBottomDiag = (i%xMax) + 1;
                 }
-            } else if (i===0) {
-                rightBottomDiag = xMax+1;
             } else if (i%xMax === xMax-1) {
-                rightBottomDiag = xMax+1;
+                rightBottomDiag = i+1;
             } else {
                 rightBottomDiag = i + xMax + 1;
             }
@@ -182,6 +184,7 @@ class Field extends React.Component {
             let aliveCells = 0;
 
             neighbours.forEach(cell => {
+                if (!arr[cell]) console.log(neighbours, cell);
                 if (arr[cell].className === 'field__cell-alive') aliveCells++;
             });
 
