@@ -156,8 +156,6 @@ class Field extends React.Component {
                 } else {
                     leftBottomDiag = i % xMax - 1;
                 }
-            } else if (i === 0) {
-                leftBottomDiag = xMax*yMax - 1;
             } else if (i%xMax === 0) {
                 leftBottomDiag = (i + (xMax*2)) - 1;
             } else {
