@@ -7,7 +7,6 @@ class Field extends React.Component {
 
         this.state = {
             size: this.props.size,
-            speed: this.props.speed,
             run: true
         };
 
@@ -54,9 +53,10 @@ class Field extends React.Component {
     componentDidMount() {
         this.timerID = setInterval(() => {
                 if (!this.isPaused) {
-                    this.changeGeneration()
+                    this.changeGeneration();
+                    this.props.countChanged();
                 }
-        }, 500);
+        }, 600);
         this.isIntervalRun = true;
     }
 
@@ -69,7 +69,6 @@ class Field extends React.Component {
 
         this.setState({
             size: nextProps.size,
-            speed: this.props.speed,
             rendered: true
         });
     }
@@ -182,7 +181,6 @@ class Field extends React.Component {
             let aliveCells = 0;
 
             neighbours.forEach(cell => {
-                if (!arr[cell]) console.log(neighbours, cell);
                 if (arr[cell].className === 'field__cell-alive') aliveCells++;
             });
 

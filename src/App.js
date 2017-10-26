@@ -12,27 +12,26 @@ class App extends React.Component {
 
         this.state = {
             size: 'middle',
-            speed: 'middle',
-            run: true
+            run: true,
+            count: 0
         };
 
         this.optionsChange = this.optionsChange.bind(this);
         this.run = this.run.bind(this);
         this.pause = this.pause.bind(this);
         this.clear = this.clear.bind(this);
+        this.onCountChanged = this.onCountChanged.bind(this);
     }
 
     render() {
         return(
             <div className="life">
                 <Controls onRun={this.run} onPause={this.pause} onClear={this.clear} />
-                <Count/>
+                <Count value={this.state.count} />
                 <Field size={this.state.size}
-                       speed={this.state.speed}
-                       run={this.state.run} />
+                       run={this.state.run} countChanged={this.onCountChanged}/>
                 <Options optionsChange={this.optionsChange}
-                         size={this.state.size}
-                         speed={this.state.speed} />
+                         size={this.state.size} />
             </div>
         );
     }
@@ -55,7 +54,8 @@ class App extends React.Component {
 
     clear() {
         this.setState({
-            run: false
+            run: false,
+            count: 0
         }, () => clearCells());
 
         function clearCells() {
@@ -66,7 +66,20 @@ class App extends React.Component {
 
     optionsChange(option, value) {
         this.setState({
-            [option]: value
+            [option]: value,
+            count: 0
+        }, () => {
+            this.clear();
+        });
+
+        if (option === 'size') {
+
+        }
+    }
+
+    onCountChanged() {
+        this.setState({
+            count: this.state.count + 1
         });
     }
 }
